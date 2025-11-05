@@ -1,0 +1,243 @@
+/* src/App.css */
+
+/* * 1. DEFINIÇÃO DA PALETA DE CORES
+ * Estas são as "variáveis-mãe"
+ */
+:root {
+  --cor-fundo: #FFFFFF;
+  --cor-texto: #6D4C41; /* Marrom-escuro para texto principal */
+  --cor-caramelo: #B57D50; /* A cor caramelo */
+  --cor-caramelo-hover: #A06D40;
+  --cor-rosa-bebe: #F4C2C2;
+  --cor-rosa-hover: #E0A0A0;
+  --cor-texto-no-rosa: #7B1F42;
+  --cor-erro: #C2185B;
+  --cor-borda-suave: #E0E0E0;
+  --cor-caramelo-claro: #FBF8F5; /* Usado para fundo de cards, etc. */
+}
+
+
+/* * 2. SUBSTITUIÇÃO DAS CORES DO PICO.CSS
+ * Colocamos tudo dentro de [data-theme="light"]
+ * para ganhar a "briga" de especificidade.
+ */
+[data-theme="light"] {
+  /* -- Fundo e Texto Geral -- */
+  --pico-background-color: var(--cor-fundo);
+  --pico-color: var(--cor-texto); /* Texto principal (parágrafos) */
+
+  /* Títulos (h1-h6) e Strong na Navbar */
+  --pico-h1-color: var(--cor-caramelo);
+  --pico-h2-color: var(--cor-caramelo);
+  --pico-h3-color: var(--cor-caramelo);
+  --pico-h4-color: var(--cor-caramelo-hover);
+  --pico-h5-color: var(--cor-caramelo-hover);
+  --pico-h6-color: var(--cor-caramelo-hover);
+  --pico-nav-brand-color: var(--cor-caramelo); /* Título da Navbar */
+
+  /* Links (botões e textos) = CARAMELO */
+  --pico-primary: var(--cor-caramelo);
+  --pico-primary-hover: var(--cor-caramelo-hover);
+  --pico-primary-focus: rgba(181, 125, 80, 0.25); 
+  --pico-primary-inverse: #FFFFFF; /* Texto branco em botões caramelo */
+  --pico-nav-element-active-color: var(--cor-caramelo); /* Links da Navbar */
+
+
+  /* -- Cor Secundária (Botões "secondary") = ROSA BEBÊ -- */
+  --pico-secondary: var(--cor-rosa-bebe);
+  --pico-secondary-hover: var(--cor-rosa-hover);
+  --pico-secondary-focus: rgba(244, 194, 194, 0.25);
+  --pico-secondary-inverse: var(--cor-texto-no-rosa);
+
+
+  /* -- Cores de Alerta (Erros e Sucesso) -- */
+  --pico-color-red-100: #FCE4EC; /* Fundo do erro */
+  --pico-color-red-300: var(--cor-erro);
+  --pico-color-red-500: var(--cor-erro);
+  --pico-color-red-700: var(--cor-erro);
+
+  --pico-color-orange-500: var(--cor-caramelo); /* Alerta ⚠️ estoque */
+  
+  --pico-color-green-100: var(--cor-caramelo-claro); /* Fundo do sucesso */
+  --pico-color-green-300: var(--cor-caramelo);
+  --pico-color-green-500: var(--cor-caramelo); 
+  --pico-color-green-700: var(--cor-caramelo-hover);
+
+
+  /* -- Estilo dos Componentes -- */
+  --pico-border-radius: 8px; 
+  --pico-border-color: var(--cor-borda-suave);
+  --pico-card-border-color: var(--cor-borda-suave);
+  --pico-nav-background-color: var(--cor-fundo);
+  --pico-nav-border-bottom: 1px solid var(--cor-borda-suave);
+
+  /* CORREÇÃO PARA FORMS E ARTICLES */
+  --pico-form-background-color: var(--cor-caramelo); /* Fundo dos forms em creme */
+  --pico-card-background-color: var(--cor-caramelo); /* Fundo dos articles (Login, Venda Sucesso) */
+}
+
+
+/*
+=====================================================
+=== 3. NOSSOS ESTILOS PERSONALIZADOS (LAYOUT & FORÇAS) ===
+=====================================================
+*/
+
+/* Layout centralizado */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Estilo do formulário (fundo e borda) */
+form {
+  background-color: var(--pico-form-background-color); /* Agora usa a variável do Pico */
+  padding: 1.5rem;
+  border-radius: var(--pico-border-radius);
+  border: 1px solid var(--pico-card-border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Uma pequena sombra para destacar */
+}
+
+/* Estilo para articles (cards, como o de login e resumo de venda) */
+article[role="document"] {
+  background-color: var(--pico-card-background-color); /* Usa a variável do Pico */
+  padding: 1.5rem;
+  border-radius: var(--pico-border-radius);
+  border: 1px solid var(--pico-card-border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Cor das letras dentro dos forms e articles (inverte para branco) */
+/* Isso afeta labels, inputs, textos simples dentro deles */
+[data-theme="light"] form,
+[data-theme="light"] article[role="document"] {
+  color: var(#FFFFFF); /* Texto dentro do form continua sendo o marrom-escuro padrão */
+}
+
+/* INPUTS DENTRO DOS FORMS */
+/* O Pico já deixa o fundo do input branco. Vamos manter. */
+/* INPUTS DENTRO DOS FORMS */
+[data-theme="light"] form input,
+[data-theme="light"] form select,
+[data-theme="light"] form textarea {
+  background-color: var(--cor-caramelo-hover); /* Fundo marrom-escuro */
+  color: #FFFFFF; /* Texto BRANCO (o que você digita) */
+  border-color: var(--cor-caramelo); /* Borda em caramelo */
+}
+
+/* Placeholder dos inputs */
+[data-theme="light"] form input::placeholder,
+[data-theme="light"] form select::placeholder,
+[data-theme="light"] form textarea::placeholder {
+  color: rgba(109, 76, 65, 0.6); /* Marrom mais suave */
+}
+
+
+/* --- FORÇA BRUTA (Overrides Finais) --- */
+/* Isso vai FORÇAR a cor caramelo onde ela não pegou */
+
+/* Força os links da Navbar (Produtos, Clientes, etc.) para Caramelo */
+[data-theme="light"] nav ul li a {
+  color: var(--cor-caramelo);
+}
+
+/* Força os TÍTULOS das páginas (Gestão de Vendas, etc.) para Caramelo */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3 {
+  color: var(--cor-caramelo);
+}
+
+/* Força o TÍTULO da Navbar (Pet Shop Amigo Fiel) para Caramelo */
+[data-theme="light"] nav ul li strong {
+  color: var(--cor-caramelo);
+}
+
+/* Muda a cor do link da navbar ao passar o mouse */
+[data-theme="light"] nav ul li a:hover {
+  color: var(--cor-caramelo-hover);
+  background-color: transparent;
+}
+
+/* Botão de Logout na Navbar (tem que ser específico para o secondary outline) */
+[data-theme="light"] nav button.secondary.outline {
+    border-color: var(--cor-caramelo);
+    color: var(--cor-caramelo);
+}
+
+[data-theme="light"] nav button.secondary.outline:hover {
+    background-color: var(--cor-caramelo);
+    color: #FFFFFF;
+}
+
+/* Alerta de Venda Realizada com Sucesso */
+[data-theme="light"] article[style*="background: var(--pico-color-green-100)"] {
+  background: var(--cor-caramelo); /* Fundo da mensagem de sucesso */
+  color: #FFFFFF; /* Texto branco */
+  border-color: var(--cor-caramelo-hover);
+}
+
+/* Título dentro do alerta de sucesso */
+[data-theme="light"] article[style*="background: var(--pico-color-green-100)"] h4 {
+  color: #FFFFFF; /* Título em branco */
+}
+
+/* Texto de "Valor Total" dentro do alerta de sucesso */
+[data-theme="light"] article[style*="background: var(--pico-color-green-100)"] h2 {
+  color: #FFFFFF; /* Valor total em branco */
+}
+
+/* Alerta de Erro na Venda */
+[data-theme="light"] article[style*="background: var(--pico-color-red-100)"] {
+  background: var(--cor-erro); /* Fundo da mensagem de erro */
+  color: #FFFFFF; /* Texto branco */
+  border-color: var(--cor-erro);
+}
+[data-theme="light"] article[style*="background: var(--pico-color-red-100)"] h4 {
+  color: #FFFFFF; /* Título do erro em branco */
+}
+[data-theme="light"] article[style*="background: var(--pico-color-red-100)"] p {
+  color: #FFFFFF; /* Parágrafo do erro em branco */
+}
+
+/* Cor do ⚠️ de estoque baixo */
+[data-theme="light"] strong[title="Estoque Baixo!"] {
+  color: #FFFFFF !important; /* Branco no fundo caramelo */
+}
+
+/* Cor das linhas da tabela quando o estoque está baixo */
+[data-theme="light"] tr[style*="background: var(--pico-color-orange-100)"] {
+    background-color: var(--cor-caramelo-claro) !important;
+}
+/*
+=====================================================
+=== 5. FORÇA BRUTA FINAL (Formulários e Tabelas) ===
+=====================================================
+*/
+
+/* FORÇA O TEXTO DENTRO DOS FORMULÁRIOS A SER BRANCO */
+
+/* Força o TÍTULO (h3) DENTRO do formulário a ser branco */
+[data-theme="light"] form h3,
+[data-theme="light"] article[role="document"] h3 {
+  color: #FFFFFF !important; 
+}
+
+/* Força as LABELS (Data da Venda, Cliente, etc) a serem brancas */
+[data-theme="light"] form label {
+  color: #FFFFFF !important;
+}
+
+/* Força o texto dentro de <select> (quando uma opção é escolhida) a ser branco */
+[data-theme="light"] form select {
+    color: #FFFFFF;
+}
+
+/* --- FORÇA OS TÍTULOS DA TABELA A SEREM CARAMELO --- */
+/* (Isso é para as páginas de Produtos e Clientes) */
+
+/* Força o cabeçalho da tabela (ID, Nome, Preço) a ser caramelo */
+[data-theme="light"] table thead th {
+    color: var(--cor-caramelo-hover);
+}
