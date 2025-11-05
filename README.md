@@ -97,7 +97,7 @@ npm run dev
 O frontend estará acessível em http://localhost:5173 (ou a porta indicada). Use as credenciais do createsuperuser para logar.
 
 🔗 Links
-Visualização Online (Demo): [SE VOCÊ FIZER O DEPLOY NO NETLIFY/VERCEL, INSIRA O LINK AQUI]
+Visualização Online (Demo): [https://oyaktav.github.io/Webpetshop/]
 
 Acesso à API (Local): http://127.0.0.1:8000/api/ (Após iniciar o servidor Django)
 
